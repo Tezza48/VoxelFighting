@@ -25,7 +25,7 @@ public class ZN_Demo_Initializer : MonoBehaviour
 
         Zapnet.Network.RegisterPacket<LoginCredentials>();
         Zapnet.Network.RegisterPacket<PlayerJumpEvent>();
-        Zapnet.Network.RegisterPacket<PlayerInputEvent>();
+        Zapnet.Network.RegisterPacket<ZN_Demo_PlayerInputEvent>();
         Zapnet.Network.RegisterPacket<WeaponFireEvent>();
         Zapnet.Network.RegisterPacket<CreateProjectileEvent>();
 

@@ -170,7 +170,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8211224061170247664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f004df7d9df0b44d87c51134a13c3c5, type: 3}
+  m_Script: {fileID: 11500000, guid: 81b928492cbfafe4b96d7101d04b195d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _state: {fileID: 396093711880899319}
@@ -303,5 +303,5 @@ MonoBehaviour:
   m_Script: {fileID: -570729386, guid: 3528a032681cf6f48b3b6b7199d7c927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueName: PlayerEntity
+  uniqueName: ZN_Demo_PlayerEntity
   regenerate: 0

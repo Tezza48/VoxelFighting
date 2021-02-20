@@ -2,7 +2,7 @@ using Lidgren.Network;
 using UnityEngine;
 using zapnet;
 
-public class PlayerState : ControllableState
+public class ZN_Demo_PlayerState : ControllableState
 {
     [HideInInspector] public BitFlags inputFlags;
     [HideInInspector] public Vector3 velocity;

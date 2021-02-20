@@ -5,8 +5,8 @@ using System.Linq;
 using System;
 using zapnet;
 
-[RequireComponent(typeof(PlayerState))]
-public class BasePlayer : BaseControllable<PlayerInputEvent>, IDamageable, IProjectileTarget
+[RequireComponent(typeof(ZN_Demo_PlayerState))]
+public class ZN_Demo_BasePlayer : BaseControllable<ZN_Demo_PlayerInputEvent>, IDamageable, IProjectileTarget
 {
     public SyncString Name = new SyncString("");
     public SyncBool IsDead = new SyncBool(false);
@@ -29,7 +29,7 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>, IDamageable, IProj
     public float cameraDistance = 10f;
     public float cameraHeight = 10f;
 
-    private Dictionary<KeyCode, InputFlag> _keyInputMap;
+    private Dictionary<KeyCode, ZN_Demo_InputFlag> _keyInputMap;
 
     private double _nextCheckScope;
     private double _nextFireTime;
@@ -172,7 +172,7 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>, IDamageable, IProj
 
     public override void ReadState(bool isSpawning)
     {
-        var state = GetState<PlayerState>();
+        var state = GetState<ZN_Demo_PlayerState>();
 
         base.ReadState(isSpawning);
     }
@@ -241,7 +241,7 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>, IDamageable, IProj
 
     protected override void ResetController()
     {
-        var state = GetState<PlayerState>();
+        var state = GetState<ZN_Demo_PlayerState>();
 
         motor.state.velocity = state.velocity;
         motor.state.isJumping = state.isJumping;
@@ -250,7 +250,7 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>, IDamageable, IProj
 
     protected override float GetTeleportDistance()
     {
-        return GetState<PlayerState>().velocity.magnitude + 1f;
+        return GetState<ZN_Demo_PlayerState>().velocity.magnitude + 1f;
     }
 
     protected override void Start()
@@ -265,14 +265,14 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>, IDamageable, IProj
 
     protected override void Awake()
     {
-        _keyInputMap = new Dictionary<KeyCode, InputFlag>()
+        _keyInputMap = new Dictionary<KeyCode, ZN_Demo_InputFlag>()
         {
-            [KeyCode.W] = InputFlag.Forward,
-            [KeyCode.S] = InputFlag.Backward,
-            [KeyCode.A] = InputFlag.Left,
-            [KeyCode.D] = InputFlag.Right,
-            [KeyCode.LeftShift] = InputFlag.Sprint,
-            [KeyCode.Mouse0] = InputFlag.Fire
+            [KeyCode.W] = ZN_Demo_InputFlag.Forward,
+            [KeyCode.S] = ZN_Demo_InputFlag.Backward,
+            [KeyCode.A] = ZN_Demo_InputFlag.Left,
+            [KeyCode.D] = ZN_Demo_InputFlag.Right,
+            [KeyCode.LeftShift] = ZN_Demo_InputFlag.Sprint,
+            [KeyCode.Mouse0] = ZN_Demo_InputFlag.Fire
         };
 
         var network = Zapnet.Network;
@@ -332,23 +332,23 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>, IDamageable, IProj
         player.SetEntity(this);
     }
 
-    protected override void ApplyInput(PlayerInputEvent input, bool isFirstTime)
+    protected override void ApplyInput(ZN_Demo_PlayerInputEvent input, bool isFirstTime)
     {
         var inputFlags = input.InputFlags;
-        var isWalking = inputFlags.Has(InputFlag.Forward | InputFlag.Backward | InputFlag.Left | InputFlag.Right);
-        var isSprinting = (isWalking && inputFlags.Has(InputFlag.Sprint));
+        var isWalking = inputFlags.Has(ZN_Demo_InputFlag.Forward | ZN_Demo_InputFlag.Backward | ZN_Demo_InputFlag.Left | ZN_Demo_InputFlag.Right);
+        var isSprinting = (isWalking && inputFlags.Has(ZN_Demo_InputFlag.Sprint));
         var wasJumping = motor.state.isJumping;
         var moveDirection = Vector3.zero;
 
         transform.localRotation = Quaternion.Euler(0, input.Yaw, 0);
 
-        if (inputFlags.Has(InputFlag.Forward) ^ inputFlags.Has(InputFlag.Backward))
+        if (inputFlags.Has(ZN_Demo_InputFlag.Forward) ^ inputFlags.Has(ZN_Demo_InputFlag.Backward))
         {
-            moveDirection.z = inputFlags.Has(InputFlag.Forward) ? 1 : -1;
+            moveDirection.z = inputFlags.Has(ZN_Demo_InputFlag.Forward) ? 1 : -1;
         }
-        else if (inputFlags.Has(InputFlag.Left) ^ inputFlags.Has(InputFlag.Right))
+        else if (inputFlags.Has(ZN_Demo_InputFlag.Left) ^ inputFlags.Has(ZN_Demo_InputFlag.Right))
         {
-            moveDirection.x = inputFlags.Has(InputFlag.Right) ? 1 : -1;
+            moveDirection.x = inputFlags.Has(ZN_Demo_InputFlag.Right) ? 1 : -1;
         }
 
         if (moveDirection.x != 0 || moveDirection.z != 0)
@@ -368,7 +368,7 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>, IDamageable, IProj
         motor.movement.maxSidewaysSpeed = moveSpeed;
 
         var motorState = motor.Simulate(moveDirection, false);
-        var state = GetState<PlayerState>();
+        var state = GetState<ZN_Demo_PlayerState>();
 
         state.velocity = motorState.velocity;
         state.inputFlags = inputFlags;
@@ -378,7 +378,7 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>, IDamageable, IProj
         base.ApplyInput(input, isFirstTime);
     }
 
-    protected override void SendInput(PlayerInputEvent input)
+    protected override void SendInput(ZN_Demo_PlayerInputEvent input)
     {
         input.InputFlags.Clear();
         

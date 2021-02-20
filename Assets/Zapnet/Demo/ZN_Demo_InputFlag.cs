@@ -1,4 +1,4 @@
-﻿public enum InputFlag
+﻿public enum ZN_Demo_InputFlag
 {
     None = 0,
     Forward = 1,

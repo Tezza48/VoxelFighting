@@ -8,14 +8,11 @@ using UnityEditor;
 
 public class Map : MonoBehaviour
 {
-    int gui_settingsWindow;
-    public Rect gui_settingsWindowRect;
-
     public Texture2D heightMapTexture;
     public Texture2D albedoMapTexture;
 
-    float warp = 0.0f;
-    float noiseScale = 4.0f;
+    //float warp = 0.0f;
+    //float noiseScale = 4.0f;
 
     public int width = 24;
     public int height = 8;
@@ -23,12 +20,22 @@ public class Map : MonoBehaviour
     int chunkSize = 32;
 
     // Voxels, 3D indexed by z, y, x
+    // TODO WT: Investigate splitting to chunk sized blocks for load time performance OR change layout so it's by chunk
     Color[] voxelMap;
+    // TODO WT: On server, keep track of changes to voxels,
+    // client builds from the heightmap as usual but then recieves the deltas to see the current state.
+    // TODO WT: On new player connection, compress deltas and send to client. (probably use list of blocks and count whtespace)
+    Color[] deltaMap;
+
+    public Color stoneColor;
 
     public MeshFilter chunkPrefab;
 
     private Dictionary<Vector2Int, GameObject> spawnedChunks;
     private Queue<Vector2Int> dirtyChunks;
+
+    private int gui_settingsWindow;
+    private Rect gui_settingsWindowRect;
 
     // Start is called before the first frame update
     void Start()
@@ -142,26 +149,26 @@ public class Map : MonoBehaviour
         return voxelMap[IndexArray3D(x, y, z)];
     }
 
-    void GenerateHeightmap()
-    {
-        //Color[] map = new Color[width * height];
-        var heightmap = new float[width * width];
-        for (int y = 0; y < width; y++)
-        {
-            for (int x = 0; x < width; x++)
-            {
-                float initial = Mathf.PerlinNoise(x / (float)width * noiseScale, y / (float)width * noiseScale) * warp;
-                float value = Mathf.PerlinNoise(x /(float)width * noiseScale + initial, y / (float)width * noiseScale + initial);
-                heightmap[y * width + x] = value;
-            }
-        }
+    //void GenerateHeightmap()
+    //{
+    //    //Color[] map = new Color[width * height];
+    //    var heightmap = new float[width * width];
+    //    for (int y = 0; y < width; y++)
+    //    {
+    //        for (int x = 0; x < width; x++)
+    //        {
+    //            float initial = Mathf.PerlinNoise(x / (float)width * noiseScale, y / (float)width * noiseScale) * warp;
+    //            float value = Mathf.PerlinNoise(x /(float)width * noiseScale + initial, y / (float)width * noiseScale + initial);
+    //            heightmap[y * width + x] = value;
+    //        }
+    //    }
 
-        var tex = new Texture2D(width, width, TextureFormat.RFloat, false);
-        tex.SetPixelData(heightmap, 0);
-        tex.Apply();
+    //    var tex = new Texture2D(width, width, TextureFormat.RFloat, false);
+    //    tex.SetPixelData(heightmap, 0);
+    //    tex.Apply();
 
-        heightMapTexture = tex;
-    }
+    //    heightMapTexture = tex;
+    //}
 
     void GenerateVoxels()
     {
@@ -171,10 +178,28 @@ public class Map : MonoBehaviour
         {
             for (int x = 0; x < width; x++)
             {
-                float groundHeight = Mathf.Max(1.0f / height, heightMapTexture.GetPixelBilinear((float)x / width, (float)z / width).r);
+                float u = (float)x / width;
+                float v = (float)z / width;
+                var albedo = albedoMapTexture.GetPixelBilinear(u, v);
+                var alpha = heightMapTexture.GetPixelBilinear(u, v).r;
+
+                float groundHeight = Mathf.Max(1.0f / height, alpha);
+                float groundThreshold = groundHeight * height;
+
                 for (int y = 0; y < height; y++)
                 {
-                    voxelMap[z * (width * height) + y * width + x] = (y < groundHeight * height) ? albedoMapTexture.GetPixelBilinear((float)x / width, (float)z / width) : new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                    int voxelIndex = z * (width * height) + y * width + x;
+
+                    if (y > groundThreshold)
+                    {
+                        voxelMap[voxelIndex] = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                    } else if (groundThreshold - y <= 2)
+                    {
+                        voxelMap[voxelIndex] = albedo;
+                    } else
+                    {
+                        voxelMap[voxelIndex] = stoneColor;
+                    }
                 }
             }
         }
@@ -194,7 +219,7 @@ public class Map : MonoBehaviour
                 //int endZ = Mathf.Min(startZ + chunkSize, width);
                 //var mesh = GenerateMeshForRange(startX, 0, startZ, endX, height, endZ);
 
-                var chunk = Instantiate(chunkPrefab);
+                var chunk = Instantiate(chunkPrefab, transform);
                 chunk.gameObject.name = "Chunk(" + x + ", " + z + ")";
                 //chunk.mesh = mesh;
 
@@ -355,7 +380,7 @@ public class Map : MonoBehaviour
 
 
 
-        GUI.DrawTexture(GUILayoutUtility.GetRect(200, 200), heightMapTexture, ScaleMode.ScaleToFit);
+        GUI.DrawTexture(GUILayoutUtility.GetRect(200, 200), albedoMapTexture, ScaleMode.ScaleToFit);
 
 //#if UNITY_EDITOR
 //        var fileName = GUILayout.TextField("VoxelFile");

@@ -28,7 +28,7 @@ public class ZN_Demo_ServerHandler : IServerHandler
 
     public void OnPlayerDisconnected(Player player)
     {
-        var entity = (player.Entity as BasePlayer);
+        var entity = (player.Entity as ZN_Demo_BasePlayer);
 
         if (entity != null)
         {
@@ -54,7 +54,7 @@ public class ZN_Demo_ServerHandler : IServerHandler
     public void CreatePlayer(Player player, ZN_Demo_LoginCredentials credentials)
     {
         // We want to create an entity to represent this player and assign control to them.
-        var entity = Zapnet.Entity.Create<BasePlayer>("PlayerEntity");
+        var entity = Zapnet.Entity.Create<ZN_Demo_BasePlayer>("PlayerEntity");
 
         entity.Name.Value = credentials.Username;
         entity.AssignControl(player);

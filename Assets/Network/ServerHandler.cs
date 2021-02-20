@@ -25,13 +25,12 @@ public class ServerHandler : IServerHandler
 
     public void OnPlayerDisconnected(Player player)
     {
-        // TODO WT: Need to implement BasePlayer type
-        //var entity = (player.Entity as BasePlayer);
+        var entity = (player.Entity as BasePlayer);
 
-        //if (entity != null)
-        //{
-        //    Zapnet.Entity.Remove(entity);
-        //}
+        if (entity != null)
+        {
+            Zapnet.Entity.Remove(entity);
+        }
     }
 
     public void OnInitialDataReceived(Player player, INetworkPacket data)
@@ -50,14 +49,12 @@ public class ServerHandler : IServerHandler
 
     public void CreatePlayer(Player player, LoginCredentials credentials)
     {
-        // TODO WT: Need to implement BasePlayer type
-        //var entity = Zapnet.Entity.Create<BasePlayer>("PlayerEntity");
+        var entity = Zapnet.Entity.Create<BasePlayer>("PlayerEntity");
 
-        //// TODO WT: Differs from docs
-        //entity.name = credentials.Username;
-        //entity.AssignControl(player);
+        entity.Name.Value = credentials.Username;
+        entity.AssignControl(player);
 
-        //entity.transform.position = Vector3.one;
+        entity.transform.position = Vector3.zero;
     }
 
     public ServerHandler(int serverVersion)
