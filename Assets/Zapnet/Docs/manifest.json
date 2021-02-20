@@ -1,0 +1,983 @@
+{
+  "homepages": [],
+  "source_base_path": "C:/Users/conna/Documents/GitHub/zapnet/DocFX",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html",
+          "hash": "FNmTlL+FMlnjddJ/oads5Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.BaseControllable-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.BaseControllable-1.html",
+          "hash": "/zVjOsfTsxB97MLxFsT51w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.BaseEntity.ClosestEntityFilter-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.BaseEntity.ClosestEntityFilter-1.html",
+          "hash": "KOA68Kcq/RbYKIzR5IFPAg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.BaseEntity.RemoteCallClientMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.BaseEntity.RemoteCallClientMethod.html",
+          "hash": "6OHV9lET5MkB3v8AWEMwHQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.BaseEntity.RemoteCallServerMethod.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.BaseEntity.RemoteCallServerMethod.html",
+          "hash": "CaNDMtjJ16vLtQG2aLoMsQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.BaseEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.BaseEntity.html",
+          "hash": "gmxhG0Vyty726BYkG2yvjg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.BaseEventData.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.BaseEventData.html",
+          "hash": "KuV/oCekk4tsFVEuXVwnlw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.BaseInputEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.BaseInputEvent.html",
+          "hash": "lybJrSoXAX4/25EIaR0TIg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.BufferTransform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.BufferTransform.html",
+          "hash": "owFeEOyC5jK3x0EURc1/EQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.ControlGainedEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.ControlGainedEvent.html",
+          "hash": "6W8+YRfQYL382GjpMK7Y4A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.ControlLostEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.ControlLostEvent.html",
+          "hash": "1FIqImNwsCTPSTg69N8g1w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.ControllableState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.ControllableState.html",
+          "hash": "xeMCS2JHGDkbhO/UKD/R0w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.EarlyEventSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.EarlyEventSettings.html",
+          "hash": "pR/Gx6p+cfZZMdEK6VZLEA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.EntityManager.OnEntityCreated.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.EntityManager.OnEntityCreated.html",
+          "hash": "IT6wVhkibPlGoREPKF2e+w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.EntityManager.OnEntityRemoved.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.EntityManager.OnEntityRemoved.html",
+          "hash": "A+QhvPWjFR3ry9x6u03ZlQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.EntityManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.EntityManager.html",
+          "hash": "LcYeW9b5XkhFbtAzg3gpEw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.EntityState.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.EntityState.html",
+          "hash": "TPmpqWvAUV+Z3DGsitFu/g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.EventListener.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.EventListener.html",
+          "hash": "eV4LMnvWspGORBb2m4yDeA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.GameClient.OnConnectionFailed.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.GameClient.OnConnectionFailed.html",
+          "hash": "UqxhUxWJO3A8UEgHaUKMvw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.GameClient.OnConnectionSuccessful.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.GameClient.OnConnectionSuccessful.html",
+          "hash": "uGHA6vVDP7RaPpIEyrF0HQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.GameClient.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.GameClient.html",
+          "hash": "i6bZ62mqyUpf2xsch4jh+w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.GameServer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.GameServer.html",
+          "hash": "26J8ix9Nh5ctvMpswva5wQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.HitInfoOBB.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.HitInfoOBB.html",
+          "hash": "VzMKHsmuAouA68quK3rEVA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.IClientHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.IClientHandler.html",
+          "hash": "uiAP5LiuKSXpIKIIa7rpcQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.INetworkPacket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.INetworkPacket.html",
+          "hash": "wrsDNGcBawd0LhHpi0QxQw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.INetworkPoolable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.INetworkPoolable.html",
+          "hash": "p2wWhnOOldBJlksE5Dfi/g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.IServerHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.IServerHandler.html",
+          "hash": "YnK7P09u0pQMfIcKGK8lFA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.ISyncVar.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.ISyncVar.html",
+          "hash": "Xt/RsBL0HgP/psZC66GtEA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.LidgrenExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.LidgrenExtensions.html",
+          "hash": "Tje8mUCRjkE5Q6XfoayXZA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.LimitedDictionary-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.LimitedDictionary-2.html",
+          "hash": "f71ayz5ozakQKIQVi23pmA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.NetSettings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.NetSettings.html",
+          "hash": "AHioDRKkNyMeaE2MQG5Z6w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.NetSimulation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.NetSimulation.html",
+          "hash": "vhrQc3HvF4ZVEDcjE9ouMg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.NetworkEvent-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.NetworkEvent-1.html",
+          "hash": "ksUsfqs1LV2/RPdZ7zkgVw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.NetworkEventType.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.NetworkEventType.html",
+          "hash": "AbfwU+WxCEbnOQtBSQpZhg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.NetworkHitbox.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.NetworkHitbox.html",
+          "hash": "SIU8q9hJdBHQcRebSSkFkw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.NetworkManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.NetworkManager.html",
+          "hash": "2d0RwDWvqqVLJ6eAkGF2tQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.NetworkRaycastHit.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.NetworkRaycastHit.html",
+          "hash": "nOWuX+18C8+/dtqcxMSddA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.NetworkUtil.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.NetworkUtil.html",
+          "hash": "fmVc7l9/ojRCFLmkgjSWMg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.OBB.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.OBB.html",
+          "hash": "TYXvn9hGVPgwJkNWp4wWkA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.OnProcessEvent-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.OnProcessEvent-1.html",
+          "hash": "sDy0brovJZeHiTVxjNa4oQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.Player.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.Player.html",
+          "hash": "2uWcH9E8VR/88k08lRZZjg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.PlayerListPacket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.PlayerListPacket.html",
+          "hash": "tI/HTVl1dqrUpLuJpF7eEw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.PlayerManager.OnInitialDataReceived.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.PlayerManager.OnInitialDataReceived.html",
+          "hash": "b0ikuAuHH+MA1UMpf9Wdzw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.PlayerManager.OnInitialDataSent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.PlayerManager.OnInitialDataSent.html",
+          "hash": "HbqKzbiC6Ew3IELCKcSLww=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.PlayerManager.OnLocalPlayerReady.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.PlayerManager.OnLocalPlayerReady.html",
+          "hash": "oK6DvoxrHCwyjrVk2LPo0A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.PlayerManager.OnPlayerAdded.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.PlayerManager.OnPlayerAdded.html",
+          "hash": "z8ykISzWmqu2vDzUnJq4nA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.PlayerManager.OnPlayerEntityChanged.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.PlayerManager.OnPlayerEntityChanged.html",
+          "hash": "hlIARL72atuq24ByHeDRiQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.PlayerManager.OnPlayerRemoved.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.PlayerManager.OnPlayerRemoved.html",
+          "hash": "/KmEjgBPLYWs/rHNGLsiJw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.PlayerManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.PlayerManager.html",
+          "hash": "DDIkhS1HQgfOz76pY2xrSw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.PrefabListPacket.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.PrefabListPacket.html",
+          "hash": "0oLYjCD6aoGE3f9UfWOjQw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.PrefabManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.PrefabManager.html",
+          "hash": "5uMrX0IuhnfG5zp/6AJauA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.RaycastUtil.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.RaycastUtil.html",
+          "hash": "T2plv0fP3wjyhFYGLPUBkg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.RemoteCall.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.RemoteCall.html",
+          "hash": "dGKmRlT1Df0/7aLNtHoYaw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.RemoteCallAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.RemoteCallAttribute.html",
+          "hash": "brGpRHXdA7dhKMfVgV3pgw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.RemoteCallEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.RemoteCallEvent.html",
+          "hash": "JhC0VGsr0XRXQG0/cxc6nA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SyncBool.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SyncBool.html",
+          "hash": "qNHnhTXZSo5foIBwPPxOaQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SyncDouble.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SyncDouble.html",
+          "hash": "8+Jmk+umIz9CyXfzL7P9VA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SyncEntity-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SyncEntity-1.html",
+          "hash": "IrZCZ+rBXrYmpWVeChshYA=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SyncFloat.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SyncFloat.html",
+          "hash": "VLuOAbk+K+dj4hZPp2RtvQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SyncInt.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SyncInt.html",
+          "hash": "R/68YP4/fA4ff45fZ+u3jw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SyncPlayer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SyncPlayer.html",
+          "hash": "mDmU8dSt9n6WsdfVxx4Edw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SyncString.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SyncString.html",
+          "hash": "azY1sGsPop5pMnrDGjkWVg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SyncTarget.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SyncTarget.html",
+          "hash": "iB03wqxukM7jLYZKKTCiEQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SyncULong.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SyncULong.html",
+          "hash": "2ExprXwCYQ3AWkYYJdlIlQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SyncVar-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SyncVar-1.html",
+          "hash": "+DopKrlevX8qaf1/zfF/2w=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.SynchronizeEvent.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.SynchronizeEvent.html",
+          "hash": "KbLam68kfCIqZh13Q4smlQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.TableList-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.TableList-1.html",
+          "hash": "/yjxCKjCX7JmkXgdbz/Hqw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.TwoWayDictionary-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.TwoWayDictionary-2.html",
+          "hash": "Ht/yVZ9+6Xu/9zEWkb1x/Q=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.UniversalTime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.UniversalTime.html",
+          "hash": "micdGe3qdNg+UR8w5lOI9g=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.Zapnet.OnClientStarted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.Zapnet.OnClientStarted.html",
+          "hash": "NMLS4pEQALKMtU6wZlaRSw=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.Zapnet.OnServerStarted.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.Zapnet.OnServerStarted.html",
+          "hash": "k60Xwjb7Pr9A7i1hcEoBWg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.Zapnet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.Zapnet.html",
+          "hash": "s9vdYAq5bRxBUKmqUMOSRQ=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/zapnet.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/zapnet.html",
+          "hash": "JncmFSg8rgbT2iB1FtfRPg=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/intro.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/intro.html",
+          "hash": "mzT/bAyyeqyd/7bapUH54A=="
+        }
+      },
+      "is_incremental": true,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/favicon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "images/favicon.ico"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/logo.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html",
+          "hash": "vDtB2sDC9qDCkYdUq90bSw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    }
+  ],
+  "incremental_info": [
+    {
+      "status": {
+        "can_incremental": true,
+        "incrementalPhase": "build",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {
+        "ResourceDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "TocDocumentProcessor": {
+          "can_incremental": false,
+          "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
+          "incrementalPhase": "build",
+          "total_file_count": 0,
+          "skipped_file_count": 0
+        },
+        "ConceptualDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 3,
+          "skipped_file_count": 2
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": true,
+          "incrementalPhase": "build",
+          "total_file_count": 72,
+          "skipped_file_count": 72
+        }
+      }
+    },
+    {
+      "status": {
+        "can_incremental": true,
+        "details": "Can support incremental post processing.",
+        "incrementalPhase": "postProcessing",
+        "total_file_count": 0,
+        "skipped_file_count": 0
+      },
+      "processors": {}
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

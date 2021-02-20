@@ -214,9 +214,9 @@ MonoBehaviour:
     y: 0
     width: 300
     height: 0
-  heightMapTexture: {fileID: 2800000, guid: 0feec67539cf08c40b96a31d7c4e4367, type: 3}
-  albedoMapTexture: {fileID: 2800000, guid: 4754ce9e0357d764d8698839cc9cd461, type: 3}
-  width: 1024
+  heightMapTexture: {fileID: 2800000, guid: 4e22341f5bda6844e8049d4390a9e9c2, type: 3}
+  albedoMapTexture: {fileID: 2800000, guid: bcadb494fb4c27545b3122809621a33d, type: 3}
+  width: 512
   height: 64
   chunkPrefab: {fileID: 2879203719413262527, guid: eaa90c3e261453840bb9cb02229f5a28,
     type: 3}

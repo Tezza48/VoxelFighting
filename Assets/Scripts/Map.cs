@@ -2,6 +2,10 @@
 using UnityEngine;
 using System.Threading.Tasks;
 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
+
 public class Map : MonoBehaviour
 {
     int gui_settingsWindow;
@@ -40,21 +44,27 @@ public class Map : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dirtyChunks.Count > 0)
+        for (int i = 0; i < 4; i++)
         {
-            var key = dirtyChunks.Dequeue();
+            if (dirtyChunks.Count > 0)
+            {
+                var key = dirtyChunks.Dequeue();
 
-            var chunk = spawnedChunks[key];
+                var chunk = spawnedChunks[key];
 
-            var startX = key.x * chunkSize;
-            var startZ = key.y * chunkSize;
+                var startX = key.x * chunkSize;
+                var startZ = key.y * chunkSize;
 
-            var mesh = chunk.GetComponent<MeshFilter>();
-            mesh.mesh.Clear();
-            mesh.mesh = GenerateMeshForRange(startX, 0, startZ, startX + chunkSize, height, startZ + chunkSize);
+                var mesh = chunk.GetComponent<MeshFilter>();
+                mesh.mesh.Clear();
+                mesh.mesh = GenerateMeshForRange(startX, 0, startZ, startX + chunkSize, height, startZ + chunkSize);
 
-            var collider = chunk.GetComponent<MeshCollider>();
-            collider.sharedMesh = mesh.mesh;
+                var collider = chunk.GetComponent<MeshCollider>();
+                collider.sharedMesh = mesh.mesh;
+            } else
+            {
+                break;
+            }
         }
     }
 
@@ -77,6 +87,38 @@ public class Map : MonoBehaviour
 
             // Mark changed chunk as dirty.
             dirtyChunks.Enqueue(new Vector2Int(chunkIdX, chunkIdZ));
+
+            if (location.x > 0 && location.x < width - 1)
+            {
+                var xInChunk = location.x % chunkSize;
+                if (xInChunk == 0)
+                {
+                    // Mark chunk x - 1 dirty
+                    dirtyChunks.Enqueue(new Vector2Int(chunkIdX - 1, chunkIdZ));
+                }
+
+                if (xInChunk == chunkSize - 1)
+                {
+                    // Mark chunk x + 1 dirty
+                    dirtyChunks.Enqueue(new Vector2Int(chunkIdX + 1, chunkIdZ));
+                }
+            }
+
+            if (location.z > 0 && location.z < width - 1)
+            {
+                var zInChunk = location.z % chunkSize;
+                if (zInChunk == 0)
+                {
+                    // Mark chunk z - 1 dirty
+                    dirtyChunks.Enqueue(new Vector2Int(chunkIdX, chunkIdZ - 1));
+                }
+
+                if (zInChunk == chunkSize - 1)
+                {
+                    // Mark chunk z + 1 dirty
+                    dirtyChunks.Enqueue(new Vector2Int(chunkIdX, chunkIdZ + 1));
+                }
+            }
         }
     }
 
@@ -282,12 +324,12 @@ public class Map : MonoBehaviour
         spawnedChunks.Clear();
     }
 
-    //private void OnGUI()
-    //{
-    //    gui_settingsWindowRect = GUILayout.Window(gui_settingsWindow, gui_settingsWindowRect, DoSettingsWindow, "Height map generation");
-    //    gui_settingsWindowRect.position = Vector2.Max(gui_settingsWindowRect.position, Screen.safeArea.position);
-    //    gui_settingsWindowRect.position = Vector2.Min(gui_settingsWindowRect.position, Screen.safeArea.size - gui_settingsWindowRect.size);
-    //}
+    private void OnGUI()
+    {
+        //gui_settingsWindowRect = GUILayout.Window(gui_settingsWindow, gui_settingsWindowRect, DoSettingsWindow, "Height map generation");
+        //gui_settingsWindowRect.position = Vector2.Max(gui_settingsWindowRect.position, Screen.safeArea.position);
+        //gui_settingsWindowRect.position = Vector2.Min(gui_settingsWindowRect.position, Screen.safeArea.size - gui_settingsWindowRect.size);
+    }
 
     void DoSettingsWindow(int window)
     {
@@ -315,17 +357,30 @@ public class Map : MonoBehaviour
 
         GUI.DrawTexture(GUILayoutUtility.GetRect(200, 200), heightMapTexture, ScaleMode.ScaleToFit);
 
-        if (GUILayout.Button("Clear"))
-        {
-            ClearChunks();
-        }
+//#if UNITY_EDITOR
+//        var fileName = GUILayout.TextField("VoxelFile");
+//        if (GUILayout.Button("Save to asset"))
+//        {
+//            var asset = ScriptableObject.CreateInstance<VoxelsAsset>();
+//            asset.voxelMap = (Color[])voxelMap.Clone();
+//            asset.width = width;
+//            asset.height = height;
 
-        if (GUILayout.Button("Build mesh"))
-        {
-            ClearChunks();
-            GenerateVoxels();
-            CreateChunks();
-        }
+//            AssetDatabase.CreateAsset(asset, "Assets/" + fileName + ".asset");
+//        }
+//#endif
+
+        //if (GUILayout.Button("Clear"))
+        //{
+        //    ClearChunks();
+        //}
+
+        //if (GUILayout.Button("Build mesh"))
+        //{
+        //    ClearChunks();
+        //    GenerateVoxels();
+        //    CreateChunks();
+        //}
 
         //if (GUILayout.Button("Regenerate")) GenerateHeightmap();
 
