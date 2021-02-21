@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Lidgren.Network;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using zapnet;
@@ -20,7 +21,7 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>
     private float _yaw;
 
     private Camera _camera;
-    private Rigidbody _rigidbody;
+    public CharacterController _characterController;
 
     public bool IsLocalPlayer
     {
@@ -36,13 +37,10 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>
         {
             if (IsLocalPlayer)
             {
-                if (_camera != null)
-                {
-                    UpdateCamera();
-                }
+                UpdateCamera();
             }
         }
-        
+
         base.Tick();
     }
 
@@ -50,15 +48,46 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>
     {
         var state = GetState<PlayerState>();
 
-        // grab any state and set it on the apropriate places. (Demo sets motor's velocity and stuff)
-
         base.ReadState(isSpawning);
     }
+
+    public override void WriteSpawn(Player player, NetOutgoingMessage message)
+    {
+        base.WriteSpawn(player, message);
+    }
+
+    public override void ReadSpawn(NetIncomingMessage message)
+    {
+        base.ReadSpawn(message);
+    }
+
+    /// <summary>
+    /// When the entity is created we can subscribe to the entity events we need.
+    /// </summary>
+    public override void OnCreated()
+    {
+        //Subscribe<CreateProjectileEvent>(OnCreateProjectileEvent);
+        //Subscribe<WeaponFireEvent>(OnWeaponFireEvent);
+
+        base.OnCreated();
+    }
+
+    /// <summary>
+    /// When the entity is removed we can unsubscribe from entity events.
+    /// </summary>
+    public override void OnRemoved()
+    {
+        //Unsubscribe<CreateProjectileEvent>(OnCreateProjectileEvent);
+        //Unsubscribe<WeaponFireEvent>(OnWeaponFireEvent);
+
+        base.OnRemoved();
+    }
+
+
     protected override void OnTeleported()
     {
         if (IsLocalPlayer)
         {
-            Debug.Log("OnTeleported");
             UpdateCamera();
         }
 
@@ -68,35 +97,24 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>
     protected override void ResetController()
     {
         var state = GetState<PlayerState>();
+
+        // grab any state and set it on the apropriate places. (Demo sets motor's velocity and stuff)
+        _characterController.Move(state.velocity * Zapnet.Network.FixedDeltaTime);
     }
 
-    //protected override float GetTeleportDistance()
-    //{
-    //    return GetState<ZN_Demo_PlayerState>().velocity.magnitude + 1f;
-    //}
+    protected override float GetTeleportDistance()
+    {
+        var state = GetState<PlayerState>();
+        Debug.Log(state.velocity.magnitude + 1f);
+        return state.velocity.magnitude + 1f;
+    }
 
     // Start is called before the first frame update
     protected override void Start()
     {
-        if (Zapnet.Network.IsClient)
+        if (HasControl())
         {
-            if (IsLocalPlayer)
-            {
-                var cams = GameObject.FindGameObjectsWithTag("MainCamera");
-                foreach (var cam in cams)
-                {
-                    cam.tag = "Untagged";
-                    cam.SetActive(false);
-                }
-
-                _camera = Instantiate(cameraPrefab);
-                _camera.tag = "MainCamera";
-
-                Debug.Log("Start");
-                UpdateCamera();
-
-                Camera.SetupCurrent(_camera);
-            }
+            UpdateCamera();
         }
 
         base.Start();
@@ -115,6 +133,8 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>
         };
 
         Name.onValueChanged += OnNameChanged;
+        
+        _camera = Camera.main;
 
         base.Awake();
     }
@@ -190,14 +210,17 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>
             moveSpeed = 6f;
         }
 
+        var vel = moveDirection * moveSpeed;
+
         // Demo uses motor to apply movement
+        _characterController.Move(vel * Zapnet.Network.FixedDeltaTime);
         // TODO WT: rigidbody movement for proper collisions
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
+        //transform.position += moveDirection * moveSpeed * Time.deltaTime;
 
 
         var state = GetState<PlayerState>();
 
-        state.velocity = moveDirection * moveSpeed;
+        state.velocity = vel;
         state.inputFlags = inputFlags;
 
         base.ApplyInput(input, isFirstTime);

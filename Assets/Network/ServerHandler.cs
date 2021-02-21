@@ -54,7 +54,7 @@ public class ServerHandler : IServerHandler
         entity.Name.Value = credentials.Username;
         entity.AssignControl(player);
 
-        entity.transform.position = Vector3.zero;
+        entity.transform.position = new Vector3(16.0f, 65.0f, 16.0f);
     }
 
     public ServerHandler(int serverVersion)

@@ -15,6 +15,8 @@ public class Initializer : MonoBehaviour
     public NetSimulation serverSimulation;
     public NetSimulation clientSimulation;
 
+    public Camera _camera;
+
 #if UNITY_EDITOR
     [Header("Editor Only")]
     public bool isServerMode;
@@ -101,6 +103,12 @@ public class Initializer : MonoBehaviour
         } else
         {
             Zapnet.Network.Connect(serverHost, serverPort, new ClientHandler(serverVersion), clientSimulation);
+        }
+
+        if (_camera)
+        {
+            Destroy(_camera.gameObject);
+            _camera = null;
         }
 
         SceneManager.LoadScene(SCENE_NAME, LoadSceneMode.Additive);
