@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System.Threading.Tasks;
+using zapnet;
 
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
-public class Map : MonoBehaviour
+public class Map : BaseEntity
 {
     public Texture2D heightMapTexture;
     public Texture2D albedoMapTexture;
@@ -25,7 +26,7 @@ public class Map : MonoBehaviour
     // TODO WT: On server, keep track of changes to voxels,
     // client builds from the heightmap as usual but then recieves the deltas to see the current state.
     // TODO WT: On new player connection, compress deltas and send to client. (probably use list of blocks and count whtespace)
-    Color[] deltaMap;
+    //Color[] deltaMap;
 
     public Color stoneColor;
 
@@ -37,19 +38,42 @@ public class Map : MonoBehaviour
     private int gui_settingsWindow;
     private Rect gui_settingsWindowRect;
 
-    // Start is called before the first frame update
-    void Start()
+    protected override void Awake()
     {
         spawnedChunks = new Dictionary<Vector2Int, GameObject>();
         dirtyChunks = new Queue<Vector2Int>();
 
-        GenerateVoxels();
 
-        CreateChunks();
+        base.Awake();
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void OnCreated()
+    {
+        Subscribe<VoxelChangeEvent>(OnVoxelChanged);
+
+        base.OnCreated();
+    }
+
+    // Start is called before the first frame update
+    protected override void Start()
+    {
+        GenerateVoxels();
+        CreateChunks();
+
+        base.Start();
+    }
+
+    public override void Tick()
+    {
+        // TODO WT: Only build chunks on the client
+        RebuildDirtyChunks();
+        //if (Zapnet.Network.IsClient)
+        //{
+        //}
+        base.Tick();
+    }
+
+    private void RebuildDirtyChunks()
     {
         for (int i = 0; i < 4; i++)
         {
@@ -68,13 +92,15 @@ public class Map : MonoBehaviour
 
                 var collider = chunk.GetComponent<MeshCollider>();
                 collider.sharedMesh = mesh.mesh;
-            } else
+            }
+            else
             {
                 break;
             }
         }
     }
 
+    // TODO WT: These should be in events.
     public void BreakVoxel(Vector3Int pos)
     {
         SetVoxel(pos, new Color(0.0f, 0.0f, 0.0f, 0.0f));
@@ -173,6 +199,7 @@ public class Map : MonoBehaviour
     void GenerateVoxels()
     {
         voxelMap = new Color[width * width * height];
+        Debug.Log(gameObject.GetInstanceID() + " voxelMap instantiated");
 
         for (int z = 0; z < width; z++)
         {
@@ -410,6 +437,21 @@ public class Map : MonoBehaviour
         //if (GUILayout.Button("Regenerate")) GenerateHeightmap();
 
         GUI.DragWindow();
+    }
+
+    private void OnVoxelChanged(VoxelChangeEvent ev)
+    {
+        Debug.Log(gameObject.GetInstanceID() + " Voxel change event! " + ev.location + " " + ev.color + "VoxelMap" + voxelMap);
+        // TODO WT: Store in deltas
+        SetVoxel(ev.location, ev.color);
+
+        if (Zapnet.Network.IsServer)
+        {
+            Debug.Log("Sending Voxel change to clients");
+            var relayEvent = Zapnet.Network.CreateEvent(ev);
+            relayEvent.IgnoreRecipient(ev.Sender);
+            relayEvent.Send();
+        }
     }
 }
 

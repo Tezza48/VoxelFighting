@@ -10,6 +10,8 @@ public class ClientHandler : IClientHandler
     {
         var message = buffer.ReadString();
         Debug.Log("The server said: " + message);
+
+        CreateMap();
     }
 
     public INetworkPacket GetCredentialsPacket()
@@ -21,6 +23,13 @@ public class ClientHandler : IClientHandler
         packet.Username = "Player";
 
         return packet;
+    }
+
+    public void CreateMap()
+    {
+        var entity = Zapnet.Entity.Create<Map>("VoxelMap");
+
+        entity.transform.position = Vector3.zero;
     }
 
     public void OnDisconnected()

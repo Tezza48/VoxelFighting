@@ -39,6 +39,7 @@ public class Initializer : MonoBehaviour
 
         Zapnet.Network.RegisterPacket<LoginCredentials>();
         Zapnet.Network.RegisterPacket<PlayerInputEvent>();
+        Zapnet.Network.RegisterPacket<VoxelChangeEvent>();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
 

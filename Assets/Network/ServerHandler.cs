@@ -49,12 +49,13 @@ public class ServerHandler : IServerHandler
 
     public void CreatePlayer(Player player, LoginCredentials credentials)
     {
+        Debug.Log("Creating player entity");
         var entity = Zapnet.Entity.Create<BasePlayer>("PlayerEntity");
 
         entity.Name.Value = credentials.Username;
         entity.AssignControl(player);
 
-        entity.transform.position = new Vector3(16.0f, 65.0f, 16.0f);
+        entity.transform.position = new Vector3(16.0f, 34.0f, 16.0f);
     }
 
     public ServerHandler(int serverVersion)

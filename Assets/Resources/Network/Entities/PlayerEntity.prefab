@@ -165,13 +165,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sendPriority: 1
+  synchronizedTransform:
+    positionAxes: 7
+    positionCompression:
+      enabled: 1
+      minimum: -1024
+      maximum: 1024
+      numberOfBits: 16
+    rotationAxes: 7
+    rotationCompression: 1
   rotation: {x: 0, y: 0, z: 0, w: 0}
   position: {x: 0, y: 0, z: 0}
-  _positionCompression:
-    enabled: 1
-    minimum: -1024
-    maximum: 1024
-    numberOfBits: 16
   lastSequenceNumber: 0
   velocity: {x: 0, y: 0, z: 0}
 --- !u!114 &4202249602604544934
@@ -183,7 +187,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5173656600897710235}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -570729386, guid: 3528a032681cf6f48b3b6b7199d7c927, type: 3}
+  m_Script: {fileID: -570729386, guid: fb85dc4885bf9be4584561e810b69e7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uniqueName: PlayerEntity

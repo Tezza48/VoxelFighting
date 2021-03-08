@@ -105,7 +105,6 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>
     protected override float GetTeleportDistance()
     {
         var state = GetState<PlayerState>();
-        Debug.Log(state.velocity.magnitude + 1f);
         return state.velocity.magnitude + 1f;
     }
 
@@ -266,6 +265,62 @@ public class BasePlayer : BaseControllable<PlayerInputEvent>
                 if (_captureCursor)
                 {
                     UpdateAim();
+
+
+                    if (Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire2"))
+                    {
+                        RaycastHit hit;
+                        var ray = new Ray(_camera.transform.position, _camera.transform.forward);
+
+                        if (Physics.Raycast(ray, out hit, 1 << 9))
+                        {
+                            var position = hit.point;
+                            var normal = hit.normal;
+
+                            position -= normal / 2.0f;
+
+                            var floored = MathUtils.Floor(position);
+
+                            Color color;
+
+                            if (Input.GetButtonDown("Fire1"))
+                            {
+                                color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+                            } else
+                            {
+                                // right click should create block on the face
+                                floored += normal;
+                                color = Color.red;
+                            }
+
+                            var evt = Zapnet.Network.CreateEvent<VoxelChangeEvent>();
+                            evt.Data.location = MathUtils.ToVector3Int(floored);
+                            evt.Data.color = color;
+                            evt.Invoke();
+                            evt.Send();
+
+                            //debugCursorPos = floored;
+                            //map.BreakVoxel(asVec3Int);
+                        }
+                    }
+
+                    //if (Input.GetButtonDown("Fire2"))
+                    //{
+                    //    RaycastHit hit;
+                    //    var ray = cam.ScreenPointToRay(Input.mousePosition);
+                    //    if (Physics.Raycast(ray, out hit))
+                    //    {
+                    //        var position = hit.point;
+                    //        var normal = hit.normal;
+
+                    //        position -= normal / 2.0f;
+
+                    //        var floored = MathUtils.Floor(position);
+                    //        floored += normal;
+                    //        var asVec3Int = MathUtils.ToVector3Int(floored);
+                    //        map.SetVoxel(asVec3Int, Color.red);
+                    //    }
+                    //}
                 }
 
 
